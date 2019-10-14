@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="author" content="Dawit">
+    <link rel="icon" href="favicon.ico">
+    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.2/cerulean/bootstrap.min.css" rel="stylesheet" integrity="sha384-EmRcsPP774S9MOi4ywB+JXUWjYnBdyInMzG2XsC5siZEUpexqxOMJW358dCYEjPu" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/master.css}">
+    <title>eRegistrar</title>
+</head>
+<body>
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a style="padding-right: 2em;" class="navbar-brand" href="/eregistrar/home">eRegistrar ::: Home</a>
+
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor01">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item" style="border-left: white 3px solid; padding-left: 2em; padding-right: 2em;">
+                <a class="nav-link" style="font-size:xx-large"  href="/eregistrar/student/list">Students</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <span style="color:yellow;padding-left: 2em; padding-right: 1em;">Welcome, Guest</span>
+            <!--<a style="color: #ffffff; margin-right: 0em;" class="nav-link" href="#">John Doe</a>-->
+            <!--<input class="form-control mr-sm-2" type="text" placeholder="Search">-->
+            <a href="#" class="btn btn-success">Sign In</a>
+        </form>
+    </div>
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+<div style="padding-top:1em;" class="container">
+    <div style="margin-bottom: 1em;">
+        <span style="font-size: 2em; color: #32a5e7;">Edit Student data with StudentId: [[${student.studentId}]]</span>
+    </div>
+
+    <form id="editBookForm" method="post" action="/eregistrar/student/edit" th:object="${student}">
+        <fieldset>
+            <input type="hidden" name="studentId" th:value="${student.studentId}"/>
+
+
+
+
+
+
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="snumber">Student Number</label>
+                        <input id="snumber" name="studentNumber" type="text" class="form-control"
+                               th:value="${student.studentNumber}">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="int">Is International</label>
+                        <select name = "isInternational" class="custom-select" id = "int" th:field="${student.international}">
+                            <option th:value="true" th:text="YES">YES</option>
+                            <option th:value="false" th:text="NO">NO</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="fn">First Name</label>
+                        <input id="fn" name="firstName" type="text" class="form-control" th:value="${student.firstName}">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="mn">Middle Name</label>
+                        <input id="mn" name="middleName" type="text" class="form-control" th:value="${student.middleName}">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="ln">Last Name</label>
+                        <input id="ln" name="lastName" type="text" class="form-control" th:value="${student.lastName}">
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="cgpa">Cgpa</label>
+                        <input id="cgpa" name="cgpa" type="text" class="form-control" placeholder="0.00"
+                               th:value="${student.cgpa}">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="ed">Date of Enrollment</label>
+                        <input id="ed" name="enrollmentDate" type="date" class="form-control"
+                               th:value="${student.enrollmentDate}">
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div style="float:right;">
+                <a href="/eregistrar/student/list" class="btn btn-outline-warning">Cancel</a>&nbsp;&nbsp;&nbsp;
+                <button id="btnSubmit" type="submit" class="btn btn-outline-success">Update Student</button>
+            </div>
+        </fieldset>
+    </form>
+</div>
+
+
+
+
+
+<footer class="footer">
+    <div class="container">
+        <span class="text-muted">DawitAnbessie ::: SoftwareEngineering</span>
+        <span style="float:right;" class="text-muted">&copy; October 2019</span>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+</body>
+</html>
